@@ -1,0 +1,226 @@
+@import "./constants";
+@import "./header";
+@import "./footer";
+
+body {
+  box-sizing: border-box;
+  background-color: $bodyColor;
+
+  h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: $colorH1;
+    padding-left: 10px;
+  }
+
+  // Testimonial
+  .container {
+    @include containerStyle();
+
+    .img:after {
+      content: "";
+      background-image: url("/ik.jpg");
+      background-position: center;
+      background-size: 150px;
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      width: 150px;
+      height: 150px;
+      border: 6px solid #ffffff;
+      border-radius: 50%;
+      z-index: 2;
+    }
+  }
+
+  // Portfolio grid
+  .grid-container {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-gap: 10px;
+
+    .grid-item {
+      height: 300px;
+      width: 300px;
+      position: relative;
+
+      &:hover {
+        .button {
+          opacity: 1;
+        }
+
+        img {
+          opacity: 0.6;
+        }
+      }
+
+      img {
+        opacity: 1;
+        display: block;
+        height: 300px;
+        border-radius: 10%;
+        transition: 0.5s ease;
+        backface-visibility: hidden;
+      }
+
+      .button {
+        transition: 0.5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 110px;
+        left: 75px;
+        text-align: center;
+
+        .text {
+          background-color: #686de0;
+          font-family: Arial, Helvetica, sans-serif;
+          color: white;
+          font-size: 16px;
+          padding: 16px 32px;
+        }
+      }
+    }
+  }
+
+  //Social media buttons
+  .social-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .social-media {
+      button {
+        height: 75px;
+        width: 100px;
+        border: none;
+        transition: width 50ms;
+
+        .hide {
+          display: none;
+          font-size: 17px;
+          color: white;
+          text-decoration: underline;
+        }
+
+        &:hover {
+          width: 250px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          transition: width 0.5s;
+
+          .hide {
+            display: block;
+          }
+        }
+      }
+
+      .blog {
+        background-color: #e17b77;
+
+        .fa-laptop-code:before {
+          content: "\f5fc";
+          color: white;
+          font-size: 30px;
+        }
+      }
+
+      .twitter {
+        background-color: #00aced;
+
+        .fa-twitter:before {
+          content: "\f099";
+          color: white;
+          font-size: 30px;
+        }
+
+        &:hover {
+          width: 300px;
+        }
+      }
+
+      .linkedin {
+        background-color: #007bb6;
+
+        .fa-linkedin-in:before {
+          content: "\f0e1";
+          color: white;
+          font-size: 30px;
+        }
+
+        &:hover {
+          width: 350px;
+        }
+      }
+
+      .facebook {
+        background-color: #3b5998;
+
+        .fa-facebook-f:before {
+          content: "\f39e";
+          color: white;
+          font-size: 30px;
+        }
+
+        &:hover {
+          width: 400px;
+        }
+      }
+
+      .github {
+        background-color: #333;
+
+        .fa-github:before {
+          content: "\f09b";
+          color: white;
+          font-size: 30px;
+        }
+
+        &:hover {
+          width: 450px;
+        }
+      }
+    }
+  }
+}
+
+//Media queries
+@media screen and (max-width: 768px) {
+  body {
+    .grid-container {
+      grid-template-columns: 300px 300px;
+      grid-gap: 0px;
+
+      .grid-item {
+        img {
+          height: 235px;
+        }
+
+        .button {
+          top: 90px;
+          left: 45px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  body {
+    .grid-container {
+      grid-template-columns: 1fr;
+      grid-gap: 0px;
+
+      .grid-item {
+        img {
+          height: 280px;
+        }
+
+        .button {
+          top: 110px;
+          left: 75px;
+        }
+      }
+    }
+  }
+}
